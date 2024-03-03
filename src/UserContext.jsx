@@ -3,13 +3,7 @@ import { createContext, useState } from "react";
 export const UserContext = createContext({});
 
 export function UserContextProvider({ children }) {
-  const [color, setColor] = useState([
-    "white",
-    "white",
-    "white",
-    "white",
-    "white",
-  ]);
+  const [color, setColor] = useState(["", "", "", "", ""]);
 
   return (
     <UserContext.Provider value={{ color, setColor }}>
