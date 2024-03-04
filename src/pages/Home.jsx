@@ -43,15 +43,24 @@ const Home = () => {
     if (filteredArray.length != 0) {
       let resistance = "";
       if (filteredArray.length <= 2) {
-        // Concatenate the digits if there are only
         for (let index = 0; index < filteredArray.length; index++) {
           const colorCode = filteredArray[index];
           resistance += colorDigit[colorCode];
         }
         resistance = `${resistance} Ω`;
       } else if (filteredArray.length === 3) {
-        resistance = parseInt(value, 10) * colorMultiplier[filteredArray[2]];
-        resistance = `${resistance} Ω`;
+        for (let index = 0; index < 2; index++) {
+          const colorCode = filteredArray[index];
+          resistance += colorDigit[colorCode];
+        }
+        console.log(resistance);
+        resistance =
+          parseInt(resistance, 10) * colorMultiplier[filteredArray[2]];
+        if (resistance > 1000) {
+          resistance = `${resistance / 1000}k Ω`;
+        } else {
+          resistance = `${resistance} Ω`;
+        }
       } else if (filteredArray.length === 4) {
         if (tolerance.hasOwnProperty(filteredArray[3])) {
           for (let index = 0; index < 2; index++) {
@@ -59,7 +68,13 @@ const Home = () => {
             resistance += colorDigit[colorCode];
           }
           resistance = resistance * colorMultiplier[filteredArray[2]];
-          resistance = `${resistance} Ω ± ${tolerance[filteredArray[3]]}`;
+          if (resistance > 1000) {
+            resistance = `${resistance / 1000}k Ω ± ${
+              tolerance[filteredArray[3]]
+            }`;
+          } else {
+            resistance = `${resistance} Ω ± ${tolerance[filteredArray[3]]}`;
+          }
         } else {
           for (let index = 0; index < 3; index++) {
             const colorCode = filteredArray[index];
@@ -67,7 +82,11 @@ const Home = () => {
           }
           resistance =
             parseInt(resistance, 10) * colorMultiplier[filteredArray[3]];
-          resistance = `${resistance} Ω`;
+          if (resistance > 1000) {
+            resistance = `${resistance / 1000}k Ω`;
+          } else {
+            resistance = `${resistance} Ω`;
+          }
         }
       } else {
         for (let index = 0; index < 3; index++) {
@@ -76,7 +95,13 @@ const Home = () => {
         }
         resistance =
           parseInt(resistance, 10) * colorMultiplier[filteredArray[3]];
-        resistance = `${resistance} Ω ± ${tolerance[filteredArray[4]]}`;
+        if (resistance > 1000) {
+          resistance = `${resistance / 1000}k Ω ± ${
+            tolerance[filteredArray[4]]
+          }`;
+        } else {
+          resistance = `${resistance} Ω ± ${tolerance[filteredArray[4]]}`;
+        }
       }
       setValue(resistance);
     } else {
