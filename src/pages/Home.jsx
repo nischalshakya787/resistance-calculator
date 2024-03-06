@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import InputBox from "@/components/InputBox";
 import { UserContext } from "@/UserContext";
+import background from "@/assets/image/resistor.png";
 
 const Home = () => {
   const { color } = useContext(UserContext);
@@ -116,7 +117,64 @@ const Home = () => {
           <InputBox digit={index} key={index} color={color[index]} />
         ))}
       </div>
-      <div className="md:w-1/2 p-4">{value}</div>
+      <div className="md:w-1/2 p-4">
+        <div className="value-box">
+          <span>{value}</span>
+        </div>
+        <div className="resistor-box">
+          <table
+            width={300}
+            cellPadding={0}
+            cellSpacing={0}
+            background={background}
+          >
+            <tbody>
+              <tr>
+                <div style={{ width: "76px", display: "inline-block" }}></div>
+                <div
+                  style={{
+                    display: "inline-block",
+                    width: "12px",
+                    height: "59px",
+                    margin: "1px 0px",
+                    backgroundColor: "#000000",
+                  }}
+                ></div>
+                <div style={{ width: "12px", display: "inline-block" }}></div>
+                <div
+                  style={{
+                    display: "inline-block",
+                    width: "12px",
+                    height: "49px",
+                    margin: "6px 0px",
+                    backgroundColor: "#ff0000",
+                  }}
+                ></div>
+                <div style={{ width: "12px", display: "inline-block" }}></div>
+                <div
+                  style={{
+                    display: "inline-block",
+                    width: "12px",
+                    height: "49px",
+                    margin: "6px 0px",
+                    backgroundColor: "#6495ed",
+                  }}
+                ></div>
+                <div style={{ width: "62px", display: "inline-block" }}></div>
+                <div
+                  style={{
+                    display: "inline-block",
+                    width: "12px",
+                    height: "49px",
+                    margin: "6px 0px",
+                    backgroundColor: "#cfb53b",
+                  }}
+                ></div>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };
