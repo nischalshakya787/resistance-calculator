@@ -6,10 +6,12 @@ import { colorDigit, colorMultiplier, tolerance } from "../data/ColorCode";
 const Home = () => {
   const { color } = useContext(UserContext);
   const [value, setValue] = useState(null);
+
   useEffect(() => {
-    let filteredArray = color.filter((item) => item !== "");
+    let filteredArray = color.filter((item) => item !== ""); // To remove the empty strings
     if (filteredArray.length != 0) {
       let resistance = "";
+      // If user has only selected color for 2 digits
       if (filteredArray.length <= 2) {
         for (let index = 0; index < filteredArray.length; index++) {
           const colorCode = filteredArray[index];
@@ -17,11 +19,11 @@ const Home = () => {
         }
         resistance = `${resistance} Ω`;
       } else if (filteredArray.length === 3) {
+        // If user has only selected color for 3 digits
         for (let index = 0; index < 2; index++) {
           const colorCode = filteredArray[index];
           resistance += colorDigit[colorCode];
         }
-        console.log(resistance);
         resistance =
           parseInt(resistance, 10) * colorMultiplier[filteredArray[2]];
         if (resistance > 1000) {
@@ -30,7 +32,9 @@ const Home = () => {
           resistance = `${resistance} Ω`;
         }
       } else if (filteredArray.length === 4) {
+        // If user has only selected color for 4 digits
         if (tolerance.hasOwnProperty(filteredArray[3])) {
+          //If the selected color has tolerance then this code will execute
           for (let index = 0; index < 2; index++) {
             const colorCode = filteredArray[index];
             resistance += colorDigit[colorCode];
@@ -57,6 +61,7 @@ const Home = () => {
           }
         }
       } else {
+        // If user has only selected color for 5 digits
         for (let index = 0; index < 3; index++) {
           const colorCode = filteredArray[index];
           resistance += colorDigit[colorCode];
@@ -81,7 +86,7 @@ const Home = () => {
     <div className="flex flex-col md:flex-row container h-[100vh] ">
       <div className="md:w-1/2 p-4">
         {color.map((digit, index) => (
-          <InputBox digit={index} key={index} color={color[index]} />
+          <InputBox digit={index} key={index} />
         ))}
       </div>
       <div className="md:w-1/2 p-4">

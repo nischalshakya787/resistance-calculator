@@ -31,5 +31,19 @@ const tolerance = {
   gold: "5%",
   silver: "10%",
 };
+const colors = [
+  "#000000", // black
+  "#A52A2A", // brown
+  "#FF0000", // red
+  "#FFA500", // orange
+  "#FFFF00", // yellow
+  "#008000", // green
+  "#0000FF", // blue
+  "#8A2BE2", // violet
+  "#808080", // gray
+  "#FFFFFF", // white
+  "gold", // gold
+  "silver", // silver
+];
 
-export { tolerance, colorDigit, colorMultiplier };
+export { tolerance, colorDigit, colorMultiplier, colors };
