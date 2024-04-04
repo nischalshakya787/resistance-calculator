@@ -85,7 +85,7 @@ const Home = () => {
   const colorLength = color.length;
   return (
     <>
-      <div className="container p-0 z-3">
+      <div className="container p-0" style={{ backgroundColor: "#34465f" }}>
         <Navbar />
         <div className="flex flex-col md:flex-row container h-[100vh] ">
           <div className="md:w-1/2 p-4 z-1">
@@ -93,11 +93,14 @@ const Home = () => {
               <InputBox digit={index} key={index} length={colorLength} />
             ))}
           </div>
-          <div className="md:w-1/2 p-4">
-            <div className="value-box">
-              <span>{value}</span>
+          <div className="md:w-1/2 p-4 ">
+            <div className="value-box text-center ">
+              <span className="text-[1.8rem] font-medium text-white">
+                {value}
+              </span>
+              <br></br>
             </div>
-            <div className="resistor-box">
+            <div className="resistor-box my-5">
               {/* <div className="bg-black h-screen flex justify-center items-center">
             <img src={background} class="blend-multiply" alt="Your Image" />
           </div> */}

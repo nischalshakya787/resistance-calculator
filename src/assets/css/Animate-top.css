@@ -1,7 +1,7 @@
 .animate-top {
   position: relative;
   top: -100px; /* Initial position */
-  animation: slideIn 0.8s forwards;
+  animation: slideIn 0.5s forwards;
 }
 
 @keyframes slideIn {

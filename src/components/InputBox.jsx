@@ -21,36 +21,40 @@ const InputBox = ({ digit, length }) => {
 
   return (
     <>
-      <div
-        className={`container border bg-red-400  relative ${
-          length - 1 === digit ? "animate-top" : ""
+      {/* <div
+        className={`container relative p-0 w-full${
+          length - 1 === digit && digit != 0 ? "animate-top" : ""
         }`}
-      >
-        <Popover>
-          <PopoverTrigger>
-            <div className="flex items-center border p-2 w-[350px] relative">
-              <span>{digits[digit]} Digit Select Color</span>
-              <div
-                className={`color-box w-[150px] border-2 h-7 border-grey-600 my-2`}
-                style={{
-                  backgroundColor: color[digit] === "" ? "white" : color[digit],
-                }}
-              >
-                sd
+        style={{ backgroundColor: "#1f2937" }} >*/}
+
+      <Popover>
+        <PopoverTrigger style={{ width: "100%" }}>
+          <div
+            className={`flex items-center p-2 w-full text-base font-medium text-gray-300 border rounded ${
+              length - 1 === digit && digit !== 0 ? "animate-top" : ""
+            }`}
+            style={{ backgroundColor: "#1f2937", borderColor: "rgb(60 64 70)" }}
+          >
+            <span className="ml-4">{digits[digit]} Digit Select Color</span>
+            <div
+              className={`color-box border-2 h-7 border-grey-500 my-2 mx-5 ml-auto w-[170px] rounded`}
+              style={{
+                backgroundColor: color[digit] === "" ? "white" : color[digit],
+              }}
+            ></div>
+          </div>
+        </PopoverTrigger>
+        <PopoverContent className="text-white flex text-center absolute">
+          <div className="flex flex-wrap">
+            {colorPalette.map((color, index) => (
+              <div key={index} className="w-1/4 p-2">
+                <ColorPaletteBox color={color} index={index} digit={digit} />
               </div>
-            </div>
-          </PopoverTrigger>
-          <PopoverContent className="text-white flex text-center ">
-            <div className="flex flex-wrap">
-              {colorPalette.map((color, index) => (
-                <div key={index} className="w-1/4 p-2">
-                  <ColorPaletteBox color={color} index={index} digit={digit} />
-                </div>
-              ))}
-            </div>
-          </PopoverContent>
-        </Popover>
-      </div>
+            ))}
+          </div>
+        </PopoverContent>
+      </Popover>
+      {/* </div> */}
     </>
   );
 };
