@@ -6,8 +6,9 @@ import {
 } from "@/components/ui/popover";
 import ColorPaletteBox from "./ColorPalttes";
 import { UserContext } from "@/UserContext";
+import "@/assets/css/Animate-top.css";
 
-const InputBox = ({ digit }) => {
+const InputBox = ({ digit, length }) => {
   const { color } = useContext(UserContext);
   const digits = ["1st", "2nd", "3rd", "4th", "5th"];
   const colorPalette =
@@ -15,10 +16,16 @@ const InputBox = ({ digit }) => {
       ? // Note: This restriction prevents users from selecting gold or silver for the first digit, as they don't represent digit values but instead indicate tolerance values.
         Array.from({ length: 12 }, () => [])
       : Array.from({ length: 9 }, () => []);
+  console.log(digit);
+  console.log(length);
 
   return (
     <>
-      <div className="container border">
+      <div
+        className={`container border bg-red-400  relative ${
+          length - 1 === digit ? "animate-top" : ""
+        }`}
+      >
         <Popover>
           <PopoverTrigger>
             <div className="flex items-center border p-2 w-[350px] relative">
@@ -33,7 +40,7 @@ const InputBox = ({ digit }) => {
               </div>
             </div>
           </PopoverTrigger>
-          <PopoverContent className="text-white bg-red-500 flex text-center ">
+          <PopoverContent className="text-white flex text-center ">
             <div className="flex flex-wrap">
               {colorPalette.map((color, index) => (
                 <div key={index} className="w-1/4 p-2">

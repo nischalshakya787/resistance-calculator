@@ -1,0 +1,16 @@
+.animate-top {
+  position: relative;
+  top: -100px; /* Initial position */
+  animation: slideIn 0.8s forwards;
+}
+
+@keyframes slideIn {
+  from {
+    z-index: -5;
+    top: -100px;
+  }
+  to {
+    top: 0;
+    z-index: 1;
+  }
+}

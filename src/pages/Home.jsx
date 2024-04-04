@@ -3,6 +3,7 @@ import InputBox from "@/components/InputBox";
 import { UserContext } from "@/UserContext";
 import background from "@/assets/image/resistor.png";
 import { colorDigit, colorMultiplier, tolerance } from "../data/ColorCode";
+import Navbar from "@/components/NavBar";
 const Home = () => {
   const { color } = useContext(UserContext);
   const [value, setValue] = useState(null);
@@ -81,77 +82,90 @@ const Home = () => {
       setValue("0 Ω");
     }
   }, [color]);
-
+  const colorLength = color.length;
   return (
-    <div className="flex flex-col md:flex-row container h-[100vh] ">
-      <div className="md:w-1/2 p-4">
-        {color.map((digit, index) => (
-          <InputBox digit={index} key={index} />
-        ))}
-      </div>
-      <div className="md:w-1/2 p-4">
-        <div className="value-box">
-          <span>{value}</span>
-        </div>
-        <div className="resistor-box">
-          {/* <div className="bg-black h-screen flex justify-center items-center">
+    <>
+      <div className="container p-0 z-3">
+        <Navbar />
+        <div className="flex flex-col md:flex-row container h-[100vh] ">
+          <div className="md:w-1/2 p-4 z-1">
+            {color.map((digit, index) => (
+              <InputBox digit={index} key={index} length={colorLength} />
+            ))}
+          </div>
+          <div className="md:w-1/2 p-4">
+            <div className="value-box">
+              <span>{value}</span>
+            </div>
+            <div className="resistor-box">
+              {/* <div className="bg-black h-screen flex justify-center items-center">
             <img src={background} class="blend-multiply" alt="Your Image" />
           </div> */}
-          <table
-            width={300}
-            cellPadding={0}
-            cellSpacing={0}
-            background={background}
-            style={{ mixBlendMode: "multiply" }}
-          >
-            <tbody>
-              <tr>
-                <div style={{ width: "76px", display: "inline-block" }}></div>
-                <div
-                  style={{
-                    display: "inline-block",
-                    width: "12px",
-                    height: "59px",
-                    margin: "1px 0px",
-                    backgroundColor: "#000000",
-                  }}
-                ></div>
-                <div style={{ width: "12px", display: "inline-block" }}></div>
-                <div
-                  style={{
-                    display: "inline-block",
-                    width: "12px",
-                    height: "49px",
-                    margin: "6px 0px",
-                    backgroundColor: "#ff0000",
-                  }}
-                ></div>
-                <div style={{ width: "12px", display: "inline-block" }}></div>
-                <div
-                  style={{
-                    display: "inline-block",
-                    width: "12px",
-                    height: "49px",
-                    margin: "6px 0px",
-                    backgroundColor: "#6495ed",
-                  }}
-                ></div>
-                <div style={{ width: "62px", display: "inline-block" }}></div>
-                <div
-                  style={{
-                    display: "inline-block",
-                    width: "12px",
-                    height: "49px",
-                    margin: "6px 0px",
-                    backgroundColor: "#cfb53b",
-                  }}
-                ></div>
-              </tr>
-            </tbody>
-          </table>
+              <table
+                width={300}
+                cellPadding={0}
+                cellSpacing={0}
+                background={background}
+                style={{ mixBlendMode: "multiply" }}
+              >
+                <tbody>
+                  <tr>
+                    <div
+                      style={{ width: "76px", display: "inline-block" }}
+                    ></div>
+                    <div
+                      style={{
+                        display: "inline-block",
+                        width: "12px",
+                        height: "59px",
+                        margin: "1px 0px",
+                        backgroundColor: "#000000",
+                      }}
+                    ></div>
+                    <div
+                      style={{ width: "12px", display: "inline-block" }}
+                    ></div>
+                    <div
+                      style={{
+                        display: "inline-block",
+                        width: "12px",
+                        height: "49px",
+                        margin: "6px 0px",
+                        backgroundColor: "#ff0000",
+                      }}
+                    ></div>
+                    <div
+                      style={{ width: "12px", display: "inline-block" }}
+                    ></div>
+                    <div
+                      style={{
+                        display: "inline-block",
+                        width: "12px",
+                        height: "49px",
+                        margin: "6px 0px",
+                        backgroundColor: "#6495ed",
+                      }}
+                    ></div>
+                    <div
+                      style={{ width: "62px", display: "inline-block" }}
+                    ></div>
+                    <div
+                      style={{
+                        display: "inline-block",
+                        width: "12px",
+                        height: "49px",
+                        margin: "6px 0px",
+                        backgroundColor: "#cfb53b",
+                      }}
+                    ></div>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
