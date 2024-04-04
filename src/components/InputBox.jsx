@@ -16,35 +16,30 @@ const InputBox = ({ digit, length }) => {
       ? // Note: This restriction prevents users from selecting gold or silver for the first digit, as they don't represent digit values but instead indicate tolerance values.
         Array.from({ length: 12 }, () => [])
       : Array.from({ length: 9 }, () => []);
-  console.log(digit);
-  console.log(length);
 
   return (
     <>
-      {/* <div
-        className={`container relative p-0 w-full${
-          length - 1 === digit && digit != 0 ? "animate-top" : ""
-        }`}
-        style={{ backgroundColor: "#1f2937" }} >*/}
-
       <Popover>
-        <PopoverTrigger style={{ width: "100%" }}>
+        <PopoverTrigger style={{ width: "100%", zIndex: 1 }}>
           <div
             className={`flex items-center p-2 w-full text-base font-medium text-gray-300 border rounded ${
               length - 1 === digit && digit !== 0 ? "animate-top" : ""
             }`}
             style={{ backgroundColor: "#1f2937", borderColor: "rgb(60 64 70)" }}
           >
-            <span className="ml-4">{digits[digit]} Digit Select Color</span>
+            <span className="ml-4">Select Color for {digits[digit]} Digit</span>
             <div
-              className={`color-box border-2 h-7 border-grey-500 my-2 mx-5 ml-auto w-[170px] rounded`}
+              className={` border-2 h-7 border-grey-500 my-2 mx-5 ml-auto w-[170px] rounded`}
               style={{
                 backgroundColor: color[digit] === "" ? "white" : color[digit],
               }}
             ></div>
           </div>
         </PopoverTrigger>
-        <PopoverContent className="text-white flex text-center absolute">
+        <PopoverContent
+          className="text-white flex text-center absolute border-none"
+          style={{ backgroundColor: "#1f2937" }}
+        >
           <div className="flex flex-wrap">
             {colorPalette.map((color, index) => (
               <div key={index} className="w-1/4 p-2">
@@ -54,7 +49,6 @@ const InputBox = ({ digit, length }) => {
           </div>
         </PopoverContent>
       </Popover>
-      {/* </div> */}
     </>
   );
 };

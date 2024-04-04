@@ -22,7 +22,7 @@ const ColorPaletteBox = ({ index, digit }) => {
 
   return (
     <div
-      className="border w-[50px] h-[50px] flex items-center justify-center cursor-pointer rounded"
+      className="border-gray-400 border w-[50px] h-[50px] flex items-center justify-center cursor-pointer rounded"
       style={{ backgroundColor: colors[index] }} // This display different colors in palette box
       onClick={handleColorSelect}
     >

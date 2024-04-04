@@ -85,13 +85,21 @@ const Home = () => {
   const colorLength = color.length;
   return (
     <>
-      <div className="container p-0" style={{ backgroundColor: "#34465f" }}>
+      <div
+        className="container p-0 h-[100vh]"
+        style={{ backgroundColor: "#34465f" }}
+      >
         <Navbar />
-        <div className="flex flex-col md:flex-row container h-[100vh] ">
+        <div className="flex flex-col md:flex-row container  ">
           <div className="md:w-1/2 p-4 z-1">
-            {color.map((digit, index) => (
-              <InputBox digit={index} key={index} length={colorLength} />
-            ))}
+            <span className="text-gray-300 font-medium text-lg p-4 ">
+              Please Select Color To Calculate The Resistance Of Resistor
+            </span>
+            <div className="input-box mt-2">
+              {color.map((digit, index) => (
+                <InputBox digit={index} key={index} length={colorLength} />
+              ))}
+            </div>
           </div>
           <div className="md:w-1/2 p-4 ">
             <div className="value-box text-center ">
