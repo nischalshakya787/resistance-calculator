@@ -4,8 +4,10 @@ import { UserContext } from "@/UserContext";
 import background from "@/assets/image/resistor.png";
 import { colorDigit, colorMultiplier, tolerance } from "../data/ColorCode";
 import Navbar from "@/components/NavBar";
+import { Button } from "@/components/ui/button";
+
 const Home = () => {
-  const { color } = useContext(UserContext);
+  const { color, setColor } = useContext(UserContext);
   const [value, setValue] = useState(null);
 
   useEffect(() => {
@@ -87,7 +89,7 @@ const Home = () => {
     <>
       <div
         className="container p-0 h-[100vh]"
-        style={{ backgroundColor: "#34465f" }}
+        style={{ backgroundColor: "rgb(60 66 75)" }}
       >
         <Navbar />
         <div className="flex flex-col md:flex-row container  ">
@@ -101,23 +103,14 @@ const Home = () => {
               ))}
             </div>
           </div>
-          <div className="md:w-1/2 p-4 ">
-            <div className="value-box text-center ">
-              <span className="text-[1.8rem] font-medium text-white">
-                {value}
-              </span>
-              <br></br>
-            </div>
-            <div className="resistor-box my-5">
-              {/* <div className="bg-black h-screen flex justify-center items-center">
-            <img src={background} class="blend-multiply" alt="Your Image" />
-          </div> */}
+          <div className="md:w-1/2 p-4 flex items-center flex-col">
+            <div className="resistor-box my-8">
               <table
                 width={300}
                 cellPadding={0}
                 cellSpacing={0}
                 background={background}
-                style={{ mixBlendMode: "multiply" }}
+                style={{}}
               >
                 <tbody>
                   <tr>
@@ -169,9 +162,36 @@ const Home = () => {
                         backgroundColor: "#cfb53b",
                       }}
                     ></div>
+                    <div
+                      style={{ width: "12px", display: "inline-block" }}
+                    ></div>
+                    <div
+                      style={{
+                        display: "inline-block",
+                        width: "12px",
+                        height: "59px",
+                        margin: "1px 0px",
+                        backgroundColor: "#cfb53b",
+                      }}
+                    ></div>
                   </tr>
                 </tbody>
               </table>
+            </div>
+            <div className="value-box text-center ">
+              <p className="font-medium text-white text-[1.4rem]">
+                Resistance Value
+              </p>
+              <p className="text-[1.8rem] font-medium text-white">{value}</p>
+              <Button
+                variant="destructive"
+                className="my-5"
+                onClick={() => {
+                  setColor([""]);
+                }}
+              >
+                Reset
+              </Button>
             </div>
           </div>
         </div>
