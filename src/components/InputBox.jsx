@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import {
   Popover,
   PopoverContent,
@@ -16,7 +16,6 @@ const InputBox = ({ digit, length }) => {
       ? // Note: This restriction prevents users from selecting gold or silver for the first digit, as they don't represent digit values but instead indicate tolerance values.
         Array.from({ length: 12 }, () => [])
       : Array.from({ length: 9 }, () => []);
-
   return (
     <>
       <Popover>

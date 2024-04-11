@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
 import { UserContext } from "@/UserContext";
-import { colors } from "@/data/ColorCode";
+import { colors, toleranceColor } from "@/data/ColorCode";
 const ColorPaletteBox = ({ index, digit }) => {
   // index: Index of the color in the array.
   // digit: Indicates which digit is being selected. For example, if digit = 0, it refers to the 1st digit; if digit = 1, it refers to the 2nd digit, and so on.
 
   const { color, setColor } = useContext(UserContext);
-
   const handleColorSelect = () => {
     const newColorArray = [...color]; // Copying the color in new array
     newColorArray[digit] = colors[index]; //Storing what color is selected
@@ -23,7 +22,9 @@ const ColorPaletteBox = ({ index, digit }) => {
   return (
     <div
       className="border-gray-400 border w-[50px] h-[50px] flex items-center justify-center cursor-pointer rounded"
-      style={{ backgroundColor: colors[index] }} // This display different colors in palette box
+      style={{
+        backgroundColor: digit != 4 ? colors[index] : toleranceColor[index],
+      }} // This display different colors in palette box
       onClick={handleColorSelect}
     >
       <span className="opacity-0 hover:opacity-100 transition-all duration-300 w-full h-full m-0 flex items-center justify-center">

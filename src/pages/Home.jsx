@@ -85,6 +85,19 @@ const Home = () => {
     }
   }, [color]);
   const colorLength = color.length;
+
+  const dimensionCalculator = (index) => {
+    if (index === 0) {
+      return { height: "59px", margin: "1px 0px", spacer: "12px" };
+    } else if (index === 2) {
+      return { height: "49px", margin: "6px 0px", spacer: "62px" };
+    } else if (index === 4) {
+      return { height: "59px", margin: "1px 0px", spacer: "12px" };
+    } else {
+      return { height: "49px", margin: "6px 0px", spacer: "12px" };
+    }
+  };
+
   return (
     <>
       <div
@@ -115,65 +128,35 @@ const Home = () => {
                 <tbody>
                   <tr>
                     <div
-                      style={{ width: "76px", display: "inline-block" }}
-                    ></div>
-                    <div
                       style={{
+                        width: "76px",
                         display: "inline-block",
-                        width: "12px",
                         height: "59px",
-                        margin: "1px 0px",
-                        backgroundColor: "#000000",
                       }}
                     ></div>
-                    <div
-                      style={{ width: "12px", display: "inline-block" }}
-                    ></div>
-                    <div
-                      style={{
-                        display: "inline-block",
-                        width: "12px",
-                        height: "49px",
-                        margin: "6px 0px",
-                        backgroundColor: "#ff0000",
-                      }}
-                    ></div>
-                    <div
-                      style={{ width: "12px", display: "inline-block" }}
-                    ></div>
-                    <div
-                      style={{
-                        display: "inline-block",
-                        width: "12px",
-                        height: "49px",
-                        margin: "6px 0px",
-                        backgroundColor: "#6495ed",
-                      }}
-                    ></div>
-                    <div
-                      style={{ width: "62px", display: "inline-block" }}
-                    ></div>
-                    <div
-                      style={{
-                        display: "inline-block",
-                        width: "12px",
-                        height: "49px",
-                        margin: "6px 0px",
-                        backgroundColor: "#cfb53b",
-                      }}
-                    ></div>
-                    <div
-                      style={{ width: "12px", display: "inline-block" }}
-                    ></div>
-                    <div
-                      style={{
-                        display: "inline-block",
-                        width: "12px",
-                        height: "59px",
-                        margin: "1px 0px",
-                        backgroundColor: "#cfb53b",
-                      }}
-                    ></div>
+                    {color.map((color, index) => {
+                      const { height, margin, spacer } =
+                        dimensionCalculator(index);
+                      return (
+                        <>
+                          <div
+                            style={{
+                              display: "inline-block",
+                              width: "12px",
+                              height: `${height}`,
+                              margin: `${margin}`,
+                              backgroundColor: `${color}`,
+                            }}
+                          ></div>
+                          <div
+                            style={{
+                              width: `${spacer}`,
+                              display: "inline-block",
+                            }}
+                          ></div>
+                        </>
+                      );
+                    })}
                   </tr>
                 </tbody>
               </table>
