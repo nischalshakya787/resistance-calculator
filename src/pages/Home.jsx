@@ -123,7 +123,6 @@ const Home = () => {
                 cellPadding={0}
                 cellSpacing={0}
                 background={background}
-                style={{}}
               >
                 <tbody>
                   <tr>

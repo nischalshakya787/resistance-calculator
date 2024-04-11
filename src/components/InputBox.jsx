@@ -4,7 +4,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import ColorPaletteBox from "./ColorPalttes";
+import ColorPaletteBox from "./ColorPaletteBox";
 import { UserContext } from "@/UserContext";
 import "@/assets/css/Animate-top.css";
 
@@ -13,9 +13,11 @@ const InputBox = ({ digit, length }) => {
   const digits = ["1st", "2nd", "3rd", "4th", "5th"];
   const colorPalette =
     digit >= 3
-      ? // Note: This restriction prevents users from selecting gold or silver for the first digit, as they don't represent digit values but instead indicate tolerance values.
-        Array.from({ length: 12 }, () => [])
+      ? digit === 4
+        ? Array.from({ length: 7 }, () => [])
+        : Array.from({ length: 12 }, () => [])
       : Array.from({ length: 9 }, () => []);
+  console.log(color);
   return (
     <>
       <Popover>
@@ -28,7 +30,7 @@ const InputBox = ({ digit, length }) => {
           >
             <span className="ml-4">Select Color for {digits[digit]} Digit</span>
             <div
-              className={` border-2 h-7 border-grey-500 my-2 mx-5 ml-auto w-[170px] rounded`}
+              className={` border h-7 border-grey-500 my-2 mx-5 ml-auto w-[170px] rounded`}
               style={{
                 backgroundColor: color[digit] === "" ? "white" : color[digit],
               }}
