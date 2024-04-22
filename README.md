@@ -4,7 +4,7 @@
 
 Resistance Calculator is a React-based project that helps users calculate the resistance value of a resistor based on its color bands. It's designed to be user-friendly and easy to use, allowing users to select the colors of the bands and obtain the corresponding resistance value.
 
-This project was created to apply the knowledge gained during the 2nd semester of [Your Institution/Program Name], showcasing practical implementation of concepts learned.
+This project was created to apply the knowledge gained during the 2nd semester of my Computer Engineering, showcasing practical implementation of concepts learned.
 
 ## Features
 
